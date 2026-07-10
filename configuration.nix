@@ -169,9 +169,8 @@ in {
         "--parallel" "4"
         "--ctx-size" "8192"
         "--cache-reuse" "256"
-        "-ctk" "q4_0"
-        "-ctv" "q4_0"
         "--ctx-checkpoints" "4"
+        "-fa"
       ];
 
       Restart = "always";
@@ -202,9 +201,8 @@ in {
         "--port" "8070"
         "--n-gpu-layers" "999"
         "--parallel" "4"
-        "-ctk" "q4_0"
-        "-ctv" "q4_0"
         "--ctx-checkpoints" "4"
+        "-fa"
       ];
 
       Restart = "always";
