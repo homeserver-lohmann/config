@@ -166,7 +166,7 @@ in {
         --host 0.0.0.0 \
         --port 8080 \
         --n-gpu-layers 999 \
-        --flash-attn \
+        --flash-attn on \
         --parallel 4 \
         --ctx-size 8192 \
         --cache-reuse 256 \
@@ -203,7 +203,7 @@ in {
         --port 8070 \
         --n-gpu-layers 999 \
         --parallel 4 \
-        --flash-attn \
+        --flash-attn on \
         --ctk q4_0 \
         --ctv q4_0 \
         --ctx-checkpoints 4
