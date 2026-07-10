@@ -170,7 +170,7 @@ in {
         "--ctx-size" "8192"
         "--cache-reuse" "256"
         "--ctx-checkpoints" "4"
-        "-fa"
+        "--flash-attn" "on"
       ];
 
       Restart = "always";
@@ -202,7 +202,7 @@ in {
         "--n-gpu-layers" "999"
         "--parallel" "4"
         "--ctx-checkpoints" "4"
-        "-fa"
+        "--flash-attn" "on"
       ];
 
       Restart = "always";
