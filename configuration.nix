@@ -99,9 +99,12 @@ in {
   # Packages
   environment.systemPackages = with pkgs; [
     docker vim
-    wakeonlan openssh
-    git iputils
-    btop cudaPackages.cudatoolkit cudaPackages.cudnn
+    wakeonlan 
+    openssh tmux
+    git git-lfs
+    iputils
+    (btop.override { cudaSupport = true; })
+    cudaPackages.cudatoolkit cudaPackages.cudnn
     llamaCoderServer
     python3Packages.huggingface-hub 
   ];
@@ -165,7 +168,9 @@ in {
         --cache-reuse 256 \
         --parallel 2 \
         --threads-http 4 \
-        --slots
+        --slots \
+        --alias "Qwen2.5-Coder-7B" \
+        --ctx-checkpoints 4
       '';
       Restart = "always";
       RestartSec = "5";
