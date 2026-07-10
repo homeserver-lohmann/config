@@ -150,37 +150,79 @@ in {
   };
 
 
-  systemd.services.llama-server = {
+  systemd.services.llama-code = {
     description = "llama.cpp Server for Coding Completion";
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
 
     serviceConfig = {
       Type = "simple";
+      Environment = "CUDA_VISIBLE_DEVICES=1";
+
       ExecStart = ''
         ${llamaCoderServer}/bin/llama-server \
         --model /home/homeserver/AI/llama-server/Qwen2.5-Coder-7B-Q4.gguf \
+        --alias "Qwen2.5-Coder-7B" \
+
         --host 0.0.0.0 \
         --port 8080 \
+
         --n-gpu-layers 999 \
-        --ctx-size 8192 
         --flash-attn \
+        --parallel 4 \
+
+        --ctx-size 8192 \
         --cache-reuse 256 \
-        --parallel 2 \
-        --threads-http 4 \
-        --slots \
-        --alias "Qwen2.5-Coder-7B" \
+        --ctk q4_0 \
+        --ctv q4_0 \
         --ctx-checkpoints 4
       '';
+
       Restart = "always";
       RestartSec = "5";
 
       User = "homeserver";
       Group = "homeserver";
 
-      StandardOutput = "append:/home/homeserver/AI/llama-server/llama-server-logs.log";
-      StandardError = "append:/home/homeserver/AI/llama-server/llama-server-logs.log";
+      StandardOutput = "append:/home/homeserver/AI/llama-server/llama-code-logs.log";
+      StandardError = "append:/home/homeserver/AI/llama-server/llama-code-logs.log";
     };
+  };
+
+  systemd.services.llama-chat = {
+    description = "llama.cpp Server for normal Chat model";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+
+    serviceConfig = {
+      Type = "simple";
+      Environment = "CUDA_VISIBLE_DEVICES=0";
+
+      ExecStart = ''
+        ${llamaCoderServer}/bin/llama-server \
+        --model /home/homeserver/AI/llama-server/Qwen3.5-9B-Q6.gguf \
+        --alias "Qwen3.5-9B" \
+
+        --host 0.0.0.0 \
+        --port 8070 \
+
+        --n-gpu-layers 999 \
+        --parallel 4 \
+        --flash-attn \
+
+        --ctk q4_0 \
+        --ctv q4_0 \
+        --ctx-checkpoints 4
+      '';
+
+      Restart = "always";
+      RestartSec = "5";
+
+      User = "homeserver";
+      Group = "homeserver";
+
+      StandardOutput = "append:/home/homeserver/AI/llama-server/llama-chat-logs.log";
+      StandardError = "append:/home/homeserver/AI/llama-server/llama-chat-logs.log";
   };
 
   environment.etc."llama-proxy/main.py".source = ./llama-proxy.py;
