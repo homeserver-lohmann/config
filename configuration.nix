@@ -223,6 +223,7 @@ in {
 
       StandardOutput = "append:/home/homeserver/AI/llama-server/llama-chat-logs.log";
       StandardError = "append:/home/homeserver/AI/llama-server/llama-chat-logs.log";
+    };
   };
 
   environment.etc."llama-proxy/main.py".source = ./llama-proxy.py;
