@@ -169,8 +169,8 @@ in {
         --parallel 4 \
         --ctx-size 8192 \
         --cache-reuse 256 \
-        --ctk q4_0 \
-        --ctv q4_0 \
+        -ctk q4_0 \
+        -ctv q4_0 \
         --ctx-checkpoints 4
       '';
 
