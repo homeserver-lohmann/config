@@ -202,8 +202,8 @@ in {
         --port 8070 \
         --n-gpu-layers 999 \
         --parallel 4 \
-        --ctk q4_0 \
-        --ctv q4_0 \
+        -ctk q4_0 \
+        -ctv q4_0 \
         --ctx-checkpoints 4
       '';
 
