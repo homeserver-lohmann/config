@@ -161,17 +161,17 @@ in {
 
       ExecStart = pkgs.lib.escapeShellArgs [
         "${llamaCoderServer}/bin/llama-server"
-        "--model /home/homeserver/AI/llama-server/Qwen2.5-Coder-7B-Q4.gguf"
-        "--alias \"Qwen2.5-Coder-7B\""
-        "--host 0.0.0.0"
-        "--port 8080"
-        "--n-gpu-layers 999"
-        "--parallel 4"
-        "--ctx-size 8192"
-        "--cache-reuse 256"
-        "-ctk q4_0"
-        "-ctv q4_0"
-        "--ctx-checkpoints 4"
+        "--model" "/home/homeserver/AI/llama-server/Qwen2.5-Coder-7B-Q4.gguf"
+        "--alias" "\"Qwen2.5-Coder-7B\""
+        "--host" "0.0.0.0"
+        "--port" "8080"
+        "--n-gpu-layers" "999"
+        "--parallel" "4"
+        "--ctx-size" "8192"
+        "--cache-reuse" "256"
+        "-ctk" "q4_0"
+        "-ctv" "q4_0"
+        "--ctx-checkpoints" "4"
       ];
 
       Restart = "always";
@@ -196,15 +196,15 @@ in {
 
       ExecStart = pkgs.lib.escapeShellArgs [
         "${llamaCoderServer}/bin/llama-server"
-        "--model /home/homeserver/AI/llama-server/Qwen3.5-9B-Q6.gguf"
-        "--alias \"Qwen3.5-9B\""
-        "--host 0.0.0.0"
-        "--port 8070"
-        "--n-gpu-layers 999"
-        "--parallel 4"
-        "-ctk q4_0"
-        "-ctv q4_0"
-        "--ctx-checkpoints 4"
+        "--model" "/home/homeserver/AI/llama-server/Qwen3.5-9B-Q6.gguf"
+        "--alias" "\"Qwen3.5-9B\""
+        "--host" "0.0.0.0"
+        "--port" "8070"
+        "--n-gpu-layers" "999"
+        "--parallel" "4"
+        "-ctk" "q4_0"
+        "-ctv" "q4_0"
+        "--ctx-checkpoints" "4"
       ];
 
       Restart = "always";
