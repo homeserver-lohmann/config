@@ -167,7 +167,7 @@ in {
         "--port" "8080"
         "--n-gpu-layers" "999"
         "--parallel" "4"
-        "--ctx-size" "8192"
+        "--ctx-size" "32768"
         "--cache-reuse" "256"
         "--ctx-checkpoints" "4"
         "--flash-attn" "on"
