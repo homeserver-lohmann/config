@@ -113,6 +113,8 @@ in {
 
   # Enable Docker
   virtualisation.docker.enable = true;
+  hardware.nvidia-container-toolkit.enable = true;
+
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
