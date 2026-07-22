@@ -123,7 +123,7 @@ in {
   # Open ports in the firewall.
   networking.firewall.trustedInterfaces = ["docker0"];
   networking.firewall.allowPing = true;
-  networking.firewall.allowedTCPPorts = [ 22 3000 3030 3035 3060 8000 8070 8080 8090 2000 25565 25566 25567 25568 25569 ];
+  networking.firewall.allowedTCPPorts = [ 22 3000 3030 3035 3060 3070 8000 8070 8080 8090 2000 25565 25566 25567 25568 25569 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
 
