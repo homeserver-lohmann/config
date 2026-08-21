@@ -230,10 +230,8 @@ in {
       Restart = "on-failure";
       RestartSec = "5s";
       
-      StateDirectory = "opencode";
-      DynamicUser = true;
-      ProtectSystem = "strict";
-      ProtectHome = true;
+      User = "homeserver";
+      Group = "homeserver";
     };
   };
 
