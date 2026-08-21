@@ -107,6 +107,7 @@ in {
     cudaPackages.cudatoolkit cudaPackages.cudnn
     llamaCoderServer
     python3Packages.huggingface-hub 
+    opencode
   ];
 
   
@@ -217,6 +218,25 @@ in {
       StandardError = "append:/home/homeserver/AI/llama-server/llama-chat-logs.log";
     };
   };
+
+  systemd.services.opencode-server = {
+    description = "OpenCode Server";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.opencode}/bin/opencode serve --hostname 0.0.0.0 --port 4040";
+      Restart = "on-failure";
+      RestartSec = "5s";
+      
+      StateDirectory = "opencode";
+      DynamicUser = true;
+      ProtectSystem = "strict";
+      ProtectHome = true;
+    };
+  };
+
 
   environment.etc."llama-proxy/main.py".source = ./llama-proxy.py;
 
