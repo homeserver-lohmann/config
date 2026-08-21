@@ -107,7 +107,6 @@ in {
     cudaPackages.cudatoolkit cudaPackages.cudnn
     llamaCoderServer
     python3Packages.huggingface-hub 
-    opencode
   ];
 
   
@@ -124,7 +123,7 @@ in {
   # Open ports in the firewall.
   networking.firewall.trustedInterfaces = ["docker0"];
   networking.firewall.allowPing = true;
-  networking.firewall.allowedTCPPorts = [ 22 3000 3030 3035 3060 3070 4040 8000 8070 8080 8090 2000 25565 25566 25567 25568 25569 ];
+  networking.firewall.allowedTCPPorts = [ 22 3000 3030 3035 3060 3070 8000 8070 8080 8090 2000 25565 25566 25567 25568 25569 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
 
 
@@ -218,23 +217,6 @@ in {
       StandardError = "append:/home/homeserver/AI/llama-server/llama-chat-logs.log";
     };
   };
-
-  systemd.services.opencode-server = {
-    description = "OpenCode Server";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.opencode}/bin/opencode serve --hostname 0.0.0.0 --port 4040";
-      Restart = "on-failure";
-      RestartSec = "5s";
-      
-      User = "homeserver";
-      Group = "homeserver";
-    };
-  };
-
 
   environment.etc."llama-proxy/main.py".source = ./llama-proxy.py;
 
