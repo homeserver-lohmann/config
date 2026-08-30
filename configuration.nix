@@ -170,7 +170,7 @@ in {
         "--n-gpu-layers" "999"
         "--parallel" "4"
         "--kv-unified"
-        "--ctx-size" "32768"
+        "--ctx-size" "16385"
         "--cache-reuse" "256"
         "--ctx-checkpoints" "4"
         "--flash-attn" "on"
