@@ -163,7 +163,7 @@ in {
 
       ExecStart = pkgs.lib.escapeShellArgs [
         "${llamaCoderServer}/bin/llama-server"
-        "--model" "/home/homeserver/AI/llama-server/Zeta2.1-Q6.gguf"
+        "--model" "/home/homeserver/AI/llama-server/Zeta2.1-Q4.gguf"
         "--alias" "\"Zeta2.1\""
         "--host" "0.0.0.0"
         "--port" "8080"
