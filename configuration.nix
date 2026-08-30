@@ -163,12 +163,13 @@ in {
 
       ExecStart = pkgs.lib.escapeShellArgs [
         "${llamaCoderServer}/bin/llama-server"
-        "--model" "/home/homeserver/AI/llama-server/Qwen2.5-Coder-7B-Q4.gguf"
-        "--alias" "\"Qwen2.5-Coder-7B\""
+        "--model" "/home/homeserver/AI/llama-server/Zeta2.1-Q6.gguf"
+        "--alias" "\"Zeta2.1\""
         "--host" "0.0.0.0"
         "--port" "8080"
         "--n-gpu-layers" "999"
         "--parallel" "4"
+        "--kv-unified"
         "--ctx-size" "32768"
         "--cache-reuse" "256"
         "--ctx-checkpoints" "4"
@@ -203,6 +204,7 @@ in {
         "--port" "8070"
         "--n-gpu-layers" "999"
         "--parallel" "4"
+        "--kv-unified"
         "--ctx-checkpoints" "4"
         "--flash-attn" "on"
       ];
